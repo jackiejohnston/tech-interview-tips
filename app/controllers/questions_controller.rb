@@ -4,12 +4,15 @@ class QuestionsController < ApplicationController
   before_action :check_current_user, only: [:new, :edit, :update, :destroy ]
   impressionist actions: [:show]
 
-  def index 
+  # This is the most complicated method in your codebase. Flog rates its
+  # complexity as 31.4. When I delete it none of your tests fail. I have added
+  # the outline of a test for the index to your questions controller.
+  def index
     if params[:tag]
       @questions = Question.all
       @questions = @questions.tagged_with(params[:tag])
       @questions = @questions.paginate(:page => params[:page], :per_page => 10)
-    elsif params[:search]  
+    elsif params[:search]
       @questions = Question.paginate(:page => params[:page], :per_page => 10)
       @questions = @questions.search(params[:search])
     else

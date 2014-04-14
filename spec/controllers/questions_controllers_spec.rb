@@ -6,6 +6,18 @@ describe QuestionsController do
    }
       # Note: .and_return('variable')  can be added on to stub in line 5.  This is often needed for the stub to be correct.
 
+  context "#index" do
+    context "when a tag is requested" do
+      it "only returns tagged results"
+    end
+    context "when a search is performed" do
+      it "returns relevant questions"
+    end
+    context "default view" do
+      it "returns ten recent questions"
+    end
+  end
+
   context "#show" do
     let(:question) { FactoryGirl.create :question }
     xit "is successful" do
