@@ -8,6 +8,9 @@ class CommentsController < ApplicationController
     @comment = Comment.new
   end
 
+  # This is the third most complicated method in your codebase. Flog rates its
+  # complexity as 23.2. When I delete it none of your tests fail. I have added
+  # the outline of a test for the create spec to your comments_controller_spec.
   def create
     question = Question.find(params[:comment][:question_id])
     answer = Answer.find(params[:comment][:answer_id])

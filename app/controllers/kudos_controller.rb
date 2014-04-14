@@ -1,5 +1,9 @@
 class KudosController < ApplicationController
 
+  # I was incorrect in describing the QuestionsController#index the most
+  # complicated method in your codebase. This create method is the most
+  # complicated code committed to your codebase. I have outlined a test for you
+  # in the kudos_controller_spec.
   def create
     @kudo = Kudo.new
     @question = Question.find(params[:question_id])

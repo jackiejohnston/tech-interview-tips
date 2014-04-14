@@ -6,11 +6,13 @@ describe AnswersController do
   context "#show" do
     let(:answer) { FactoryGirl.create :answer }
     it "is successful" do
+      pending
       get :show, id: answer.id
       expect(response).to render_template(:show)
     end
 
     it "assigns @answer to the answer found by id" do
+      pending
       get :show, id: answer.id
       expect(assigns(:answer)).to eq answer
     end
