@@ -9,6 +9,10 @@ class AnswersController < ApplicationController
     @answer = Answer.new
   end
 
+  # This is your application's fifth most complicated method with a Flog rating
+  # of 17.9. And if I delete the code, one test fails. However, there are two
+  # paths through the conditionals, so I should see at leat two failing tests.
+  # What should be true if invalid parameters are given?
   def create
     question = Question.find(params[:answer][:question_id])
     answer = Answer.new(answer_params)
