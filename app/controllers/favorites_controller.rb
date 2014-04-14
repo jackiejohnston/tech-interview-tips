@@ -1,5 +1,7 @@
 class FavoritesController < ApplicationController
 
+  # This action is untested and flog rates its complexity at 22.1. I've outlined
+  # a possible spec for you in the favorites_controller_spec
   def create
     favorite = Favorite.new
     question = Question.find(params[:question_id])
