@@ -29,6 +29,7 @@ class QuestionsController < ApplicationController
     @question = Question.new
   end
 
+  # One test fails when this method is commented out. Get a second test on this.
   def create
     @user = User.find(current_user.id)
     @question = Question.new(question_params)
