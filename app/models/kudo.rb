@@ -5,6 +5,8 @@ class Kudo < ActiveRecord::Base
 
   private
 
+  # This code is duplicated across the answers, comments, kudos, and
+  # questions. To eliminate duplication I would prefer this be in a module.
   def create_action
     Action.create(
       actionable: self,
