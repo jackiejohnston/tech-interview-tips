@@ -29,6 +29,8 @@ class AnswersController < ApplicationController
     @answer = Answer.find params[:id]
   end
 
+  # This is complicated (14.7) and untested. What are the happy and sad paths to
+  # test on the update actions?
   def update
     @answer = Answer.find params[:id]
     @question = Question.find(params[:answer][:question_id])
