@@ -87,4 +87,4 @@ gem 'acts-as-taggable-on'
 # This makes Heroku happy:
 gem 'rails_12factor', group: :production
 
-ruby "1.9.3"
+ruby "2.0.0"

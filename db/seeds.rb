@@ -12,6 +12,7 @@ categories.each do |category|
   Category.create(content: category)
 end
 
+fun = ["ya"]
 questions = ["What is the difference between a symbol and string?", "What are class variables? How do you define them?", "What is restful routing?", "How can you implement caching in rails?", "What is a polymorphic association?"]
 
 questions.each do |question|
