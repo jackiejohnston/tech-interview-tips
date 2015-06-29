@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'active_model_serializers'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.3'
+gem 'rails', '4.2.3'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -75,7 +75,7 @@ end
 
 gem 'omniauth-github'
 gem 'omniauth-linkedin-oauth2'
-gem 'foundation-rails'
+# gem 'foundation-rails'
 gem 'friendly_id', '~> 5.0.0'
 gem 'pygments.rb'
 gem 'redcarpet'
@@ -87,4 +87,4 @@ gem 'acts-as-taggable-on'
 # This makes Heroku happy:
 gem 'rails_12factor', group: :production
 
-ruby "1.9.3"
+ruby "2.2.1"

@@ -56,3 +56,6 @@ Thumbs.db
 
 db/schema.rb
 db/seeds.rb
+
+.ruby-version
+.ruby-gemset

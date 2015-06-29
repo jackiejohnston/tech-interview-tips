@@ -1,4 +1,6 @@
 class AnswersController < ApplicationController
+  before_action :check_current_user, only: [:new, :create, :edit, :update, :destroy ]
+  before_action :check_answer_owner, only: [:edit, :update, :destroy]
 
   def show
     @answer = Answer.find params[:id]
@@ -41,5 +43,17 @@ class AnswersController < ApplicationController
   private
   def answer_params
     params.require(:answer).permit(:content)
+  end
+
+  def check_current_user
+    unless current_user
+      redirect_to root_url, flash: { alert: "Please sign in first" }
+    end
+  end
+
+  def check_answer_owner
+    unless current_user.id == @answer.user.id
+      redirect_to root_url, flash: { alert: "This is not your answer" }
+    end
   end
 end
