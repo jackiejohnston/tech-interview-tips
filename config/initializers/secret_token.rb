@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-TechInterviewTips::Application.config.secret_key_base = 'f99580bbd4fa7e4f00e5f4ad5b58b27e97ca5f8680cce6b4ddd0e6ff95ef8638a797004a3ab67a48fecc9bcd4852f17f2a549ea3ccae94f6a37b341bda9ed78c'
+TechInterviewTips::Application.config.secret_key_base = '1630c4d5a6c34b7d0d7857852dbee6bcdb8fd908f642b3c89af0fd988d09e3c5823e46b92650b116668fc3a16086cb6e9bed503d9e7ed19cf51f9f3ba2e79fb8'
