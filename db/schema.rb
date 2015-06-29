@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140417152353) do
+ActiveRecord::Schema.define(version: 20150629024136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "actions", force: true do |t|
+  create_table "actions", force: :cascade do |t|
     t.integer  "actionable_id"
     t.string   "actionable_type"
     t.text     "content"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20140417152353) do
   add_index "actions", ["actionable_type"], name: "index_actions_on_actionable_type", using: :btree
   add_index "actions", ["user_id"], name: "index_actions_on_user_id", using: :btree
 
-  create_table "answers", force: true do |t|
+  create_table "answers", force: :cascade do |t|
     t.text     "content"
     t.integer  "question_id"
     t.integer  "category_id"
@@ -38,13 +38,13 @@ ActiveRecord::Schema.define(version: 20140417152353) do
     t.datetime "updated_at"
   end
 
-  create_table "categories", force: true do |t|
+  create_table "categories", force: :cascade do |t|
     t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "comments", force: true do |t|
+  create_table "comments", force: :cascade do |t|
     t.string   "content"
     t.integer  "commentable_id"
     t.string   "commentable_type"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20140417152353) do
     t.integer  "user_id"
   end
 
-  create_table "favorites", force: true do |t|
+  create_table "favorites", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "favoritable_id"
     t.string   "favoritable_type"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20140417152353) do
     t.datetime "updated_at"
   end
 
-  create_table "friendly_id_slugs", force: true do |t|
+  create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false
     t.string   "sluggable_type", limit: 50
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20140417152353) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
-  create_table "impressions", force: true do |t|
+  create_table "impressions", force: :cascade do |t|
     t.string   "impressionable_type"
     t.integer  "impressionable_id"
     t.integer  "user_id"
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 20140417152353) do
   add_index "impressions", ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index", using: :btree
   add_index "impressions", ["user_id"], name: "index_impressions_on_user_id", using: :btree
 
-  create_table "kudos", force: true do |t|
+  create_table "kudos", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "kudosible_id"
     t.string   "kudosible_type"
@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 20140417152353) do
     t.datetime "updated_at"
   end
 
-  create_table "questions", force: true do |t|
+  create_table "questions", force: :cascade do |t|
     t.text     "title"
     t.text     "content"
     t.integer  "user_id"
@@ -119,7 +119,7 @@ ActiveRecord::Schema.define(version: 20140417152353) do
 
   add_index "questions", ["slug"], name: "index_questions_on_slug", unique: true, using: :btree
 
-  create_table "taggings", force: true do |t|
+  create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
     t.string   "taggable_type"
@@ -130,15 +130,16 @@ ActiveRecord::Schema.define(version: 20140417152353) do
   end
 
   add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
-  create_table "tags", force: true do |t|
+  create_table "tags", force: :cascade do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
