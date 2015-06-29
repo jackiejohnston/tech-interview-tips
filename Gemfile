@@ -83,6 +83,7 @@ gem 'font-awesome-sass'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-foundation'
 gem 'acts-as-taggable-on'
+gem 'responders', '~> 2.0'
 
 # This makes Heroku happy:
 gem 'rails_12factor', group: :production
