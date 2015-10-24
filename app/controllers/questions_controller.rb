@@ -2,7 +2,6 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:edit, :update, :destroy]
   before_action :set_question_redirect, only: [:show]
   before_action :check_current_user, only: [:new, :edit, :update, :destroy ]
-  impressionist actions: [:show]
 
 # When I search for 'ruby' then I expect to see questions with the text 'ruby'
 # in order of most answered.
@@ -33,7 +32,6 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    impressionist(@question)
   end
 
   def new

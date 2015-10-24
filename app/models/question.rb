@@ -9,7 +9,6 @@
   validates :title, presence: true
   after_create :create_action
   acts_as_taggable
-  is_impressionable
 
   scope :unanswered, -> {
     select("questions.id, title, slug").
