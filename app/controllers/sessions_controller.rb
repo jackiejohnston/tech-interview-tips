@@ -1,12 +1,28 @@
-class SessionsController < ApplicationController
-  def create
-    user = User.from_omniauth(env["omniauth.auth"])
-    session[:user_id] = user.id
-    redirect_to root_url, flash: { success: "Signed in!" }
-  end
+# class SessionsController < ApplicationController
+#   def create
+#     user = User.from_omniauth(env["omniauth.auth"])
+#     session[:user_id] = user.id
+#     redirect_to root_url, flash: { success: "Signed in!" }
+#   end
 
+#   def destroy
+#     session[:user_id] = nil
+#     redirect_to root_url, flash: { success: "Signed out!" }
+#   end
+# end
+
+
+class SessionsController < ApplicationController   
+  def create     
+    auth = request.env["omniauth.auth"]     
+    user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)     
+    session[:user_id] = user.id     
+    redirect_to root_url, :notice => "Signed in!"
+  end
+ 
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, flash: { success: "Signed out!" }
+    redirect_to root_url, :notice => "Signed out!"
   end
+ 
 end
